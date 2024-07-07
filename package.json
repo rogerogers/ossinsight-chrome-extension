@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JohnBra/web-extension.git"
+    "url": "https://github.com/rogerogers/ossinsight-chrome-extension"
   },
   "scripts": {
     "build": "vite build",
@@ -13,8 +13,10 @@
   },
   "type": "module",
   "dependencies": {
+    "axios": "^1.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "recharts": "^2.12.7",
     "webextension-polyfill": "^0.11.0"
   },
   "devDependencies": {
