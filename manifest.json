@@ -18,6 +18,7 @@
   "icons": {
     "128": "icon-128.png"
   },
+  "host_permissions": ["*://*.github.com/"],
   "permissions": ["activeTab"],
   "web_accessible_resources": [
     {
