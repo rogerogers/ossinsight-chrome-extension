@@ -1,3 +1,9 @@
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@src/components/ui/tabs";
 import { LineChart } from "@tremor/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -44,19 +50,28 @@ export default function Popup(): JSX.Element {
   }, []);
 
   return (
-    <div className="flex justify-center m-10">
-      <LineChart
-        className="mt-4 h-72"
-        data={data}
-        index="date"
-        categories={["stargazers"]}
-        colors={["blue"]}
-        yAxisLabel="stargazers"
-        yAxisWidth={30}
-        maxValue={yMax}
-        // customTooltip={customTooltip}
-      />
-    </div>
+    <Tabs defaultValue="stargazers">
+      <TabsList>
+        <TabsTrigger value="stargazers">Stargazers</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="stargazers" className="w-full px-6">
+        <div className="flex justify-center">
+          <LineChart
+            className="mt-4 h-72"
+            data={data}
+            index="date"
+            categories={["stargazers"]}
+            colors={["blue"]}
+            yAxisLabel="stargazers"
+            yAxisWidth={30}
+            maxValue={yMax}
+            // customTooltip={customTooltip}
+          />
+        </div>
+      </TabsContent>
+      <TabsContent value="password">Change your password here.</TabsContent>
+    </Tabs>
 
     // <div className="h-full pt-10 flex justify-center">
     //   <LineChart
