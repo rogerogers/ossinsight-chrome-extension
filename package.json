@@ -16,6 +16,7 @@
     "@headlessui/react": "^2.1.2",
     "@headlessui/tailwindcss": "^0.2.1",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@tabler/icons-react": "^3.11.0",
     "@tremor/react": "^3.17.4",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
