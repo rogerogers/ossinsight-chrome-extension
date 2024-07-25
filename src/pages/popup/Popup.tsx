@@ -1,3 +1,5 @@
+import { ModeToggle } from '@src/components/mode-toggle';
+import { ThemeProvider } from '@src/components/theme-provider';
 import {
   Card,
   CardContent,
@@ -60,71 +62,60 @@ export default function Popup(): JSX.Element {
   }, []);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{fullRepo}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Tabs defaultValue="stargazers">
-          <TabsList>
-            <TabsTrigger value="stargazers">Stargazers</TabsTrigger>
-            {/* <TabsTrigger value="password">Password</TabsTrigger> */}
-          </TabsList>
-          <TabsContent value="stargazers" className="w-full px-6">
-            <div className="flex justify-center">
-              <LineChart
-                className="mt-4 h-72"
-                data={data}
-                index="date"
-                categories={['stargazers']}
-                colors={['blue']}
-                yAxisWidth={50}
-                maxValue={yMax}
-                // customTooltip={customTooltip}
-              />
-            </div>
-          </TabsContent>
-          {/* <TabsContent value="password">Change your password here.</TabsContent> */}
-        </Tabs>
-      </CardContent>
-      <CardFooter>
-        <p>
-          Developed by{' '}
-          <a
-            href="https://github.com/rogerogers/ossinsight-chrome-extension"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-600 dark:text-blue-300"
-          >
-            rogerogers
-          </a>
-          , and the data is provided by{' '}
-          <a
-            href="https://ossinsight.io/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-600 dark:text-blue-300"
-          >
-            OSSInsight
-          </a>
-        </p>
-      </CardFooter>
-    </Card>
-
-    // <div className="h-full pt-10 flex justify-center">
-    //   <LineChart
-    //     width={500}
-    //     height={300}
-    //     data={data}
-    //     margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-    //   >
-    //     <CartesianGrid strokeDasharray="3 3" />
-    //     <XAxis dataKey="date" />
-    //     <YAxis domain={[0, yMax]} />
-    //     <Tooltip />
-    //     <Legend />
-    //     <Line type="monotone" dataKey="stargazers" stroke="#8884d8" />
-    //   </LineChart>
-    // </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Card>
+        <CardHeader>
+          <CardTitle>{fullRepo}</CardTitle>
+          <div className="flex justify-end">
+            <ModeToggle />
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="stargazers">
+            <TabsList>
+              <TabsTrigger value="stargazers">Stargazers</TabsTrigger>
+              {/* <TabsTrigger value="password">Password</TabsTrigger> */}
+            </TabsList>
+            <TabsContent value="stargazers" className="w-full px-6">
+              <div className="flex justify-center">
+                <LineChart
+                  className="mt-4 h-72"
+                  data={data}
+                  index="date"
+                  categories={['stargazers']}
+                  colors={['blue']}
+                  yAxisWidth={50}
+                  maxValue={yMax}
+                  // customTooltip={customTooltip}
+                />
+              </div>
+            </TabsContent>
+            {/* <TabsContent value="password">Change your password here.</TabsContent> */}
+          </Tabs>
+        </CardContent>
+        <CardFooter>
+          <p>
+            Developed by{' '}
+            <a
+              href="https://github.com/rogerogers/ossinsight-chrome-extension"
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-900 dark:text-blue-300"
+            >
+              rogerogers
+            </a>
+            , and the data is provided by{' '}
+            <a
+              href="https://ossinsight.io/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-900 dark:text-blue-300"
+            >
+              OSSInsight
+            </a>
+          </p>
+        </CardFooter>
+      </Card>
+    </ThemeProvider>
   );
 }
